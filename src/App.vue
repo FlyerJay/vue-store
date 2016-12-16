@@ -1,28 +1,51 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
-  </div>
+	<transition name="page-slide">
+		<router-view></router-view>
+	</transition>
 </template>
 
 <script>
-import Hello from './components/Hello'
-
 export default {
-  name: 'app',
-  components: {
-    Hello
-  }
+  	data () {
+  		return {
+
+  		}
+  	},
+  	mounted:function(){
+  		this.appShow()
+  	},
+  	methods:{
+  		appShow:function(){
+			this.$router.push("index");
+  		}
+  	}
 }
 </script>
 
 <style>
+body,html{
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+	width: 100%;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Microsoft yahei', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.page-slide-enter-active {
+  transition: all .2s ease;
+}
+
+.page-slide-leave-active {
+  transition: all .2s ease-out;
+}
+
+.page-slide-enter, .page-slide-leave-active {
+  /*margin-top: 100vh;*/
+  transform: translateX(100vw);
 }
 </style>
