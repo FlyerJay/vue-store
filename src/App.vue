@@ -37,14 +37,14 @@ body,html{
   color: #2c3e50;
 }
 .page-slide-enter-active {
-  transition: all .2s ease;
+  transition: all .5s ease;
 }
 
 .page-slide-leave-active {
-  transition: all .2s ease-out;
+  transition: all 0s ease-out;
 }
 
-.page-slide-enter, .page-slide-leave-active {
+.page-slide-enter,.page-slide-leave-active{
   /*margin-top: 100vh;*/
   transform: translateX(100vw);
 }

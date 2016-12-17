@@ -1,7 +1,7 @@
 <template>
-	<div class="index">
-		<vue-header></vue-header>
+	<div class="entrance">
 		<banner></banner>
+		<vue-header></vue-header>
 		<div class="content">
 			<topic-recommend></topic-recommend>
 			<topic-recommend></topic-recommend>

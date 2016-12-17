@@ -1,3 +1,4 @@
 import Banner from './Banner'
 import VueHeader from './VueHeader'
-export default {Banner,VueHeader}
+import TopicRecommend from './TopicRecommend'
+export default {Banner,VueHeader,TopicRecommend}

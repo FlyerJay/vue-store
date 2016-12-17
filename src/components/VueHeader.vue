@@ -19,6 +19,18 @@
 			navTo:function(index){
 				this.active = index;
 			}
+		},
+		watch:{
+			active:function(val){
+				switch(val){
+					case 0:
+						this.$router.push("index");
+						break;
+					case 1:
+						this.$router.push("entrance");
+						break;
+				}
+			}
 		}
 	}
 </script>

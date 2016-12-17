@@ -1,6 +1,6 @@
 <template>
 	<div class="banner">
-		<div class="banner-list" @click="next" :style="{width:items.length*100+'vw',left:'-'+show*100+'vw'}">
+		<div class="banner-list" :style="{width:items.length*100+'vw',left:'-'+show*100+'vw'}">
 			<div class="banner-item" v-for="(item,index) in items" :style="{'background-image':'url('+item.image+')','left':index*100+'vw'}">
 				<div class="item-info">
 					<p class="title">{{item.title}}</p>
