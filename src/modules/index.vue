@@ -4,7 +4,12 @@
 		<banner></banner>
 		<div class="content">
 			<topic-recommend></topic-recommend>
+		</div>
+		<div class="content">
 			<topic-recommend></topic-recommend>
+		</div>
+		<div class="footer">
+			<vue-footer></vue-footer>
 		</div>
 	</div>
 </template>
@@ -21,7 +26,11 @@
 </script>
 <style scoped>
 	.content{
-		padding: 20px 5%;
+		padding: 10px 5%;
+		background-color: #f4f4f4;
+	}
+	.footer{
+		padding: 10px 5%;
 		background-color: #f4f4f4;
 	}
 </style>

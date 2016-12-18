@@ -1,27 +1,30 @@
 <template>
 	<div class="header">
 		<div class="navbar">
-			<div class="nav-item" :class="{'active':active==index}" @click="navTo(index)" v-for="(item,index) in items">
+			<div class="nav-item" :class="{'active':page==index}" @click="navTo(index)" v-for="(item,index) in items">
 				<span>{{item}}</span>
 			</div>
 		</div>
 	</div>
 </template>
 <script type="text/ecmascript-6">
+	import {mapState,mapMutations} from "vuex"
 	export default {
 		data () {
 			return {
 				items:["首页","进口水果","国产水果","特价"],
-				active:0
 			}
 		},
 		methods:{
 			navTo:function(index){
-				this.active = index;
-			}
+				this.$store.commit("changePage",index);
+			},
+			...mapMutations([
+				"changePage"
+			])
 		},
 		watch:{
-			active:function(val){
+			page:function(val){
 				switch(val){
 					case 0:
 						this.$router.push("index");
@@ -31,6 +34,11 @@
 						break;
 				}
 			}
+		},
+		computed:{
+			...mapState([
+				"page"
+			])
 		}
 	}
 </script>

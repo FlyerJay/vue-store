@@ -1,11 +1,10 @@
-import Vuex from "vuex"
-export default new Vuex{
+export default{
 	state:{
-		activeNav:0
+		page: 0,
 	},
-	mutation:{
-		"changeNavs":function(state,active){
-			
+	mutations: {
+		changePage(state, index){
+			state.page = index;
 		}
 	}
 }

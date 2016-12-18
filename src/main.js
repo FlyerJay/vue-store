@@ -3,11 +3,12 @@ import Vuex from "vuex"
 import routes from "./router/routes"
 import VueResource from "vue-resource"
 import VueRouter from "vue-router"
+import stores from "./store/store"
 Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(VueResource)
-var store = new Vuex.Store({
-
+const store = new Vuex.Store({
+	...stores
 })
 const router = new VueRouter({
 	routes,
@@ -18,4 +19,5 @@ const router = new VueRouter({
 new Vue({
 	el:"#app",
 	router,
+	store
 })
