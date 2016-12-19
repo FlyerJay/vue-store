@@ -109,7 +109,7 @@
 		position: absolute;
 		overflow: auto;
 		height: 100%;
-		transition:.5s;
+		transition:1s;
 	}
 	.banner-item{
 		width: 100vw;
