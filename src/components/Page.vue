@@ -1,9 +1,9 @@
 <template>
 	<ul class="pagenation">
 		<li class="prev-page page-item" @click="prevPage">上一页</li>
-		<li class="more-prev page-item" v-if="pageRange[0]>1"><i class="iconfont icon-more"></i></li>
-		<li class="page-item" @click="pageClick(item)" v-for="item in pageRange">{{item}}</li>
-		<li class="more-nexr page-item" v-if="pageRange[pageRange.length-1]<totalPage"><i class="iconfont icon-more"></i></li>
+		<li class="more-prev page-item" @click="currentPage=1" v-if="pageRange[0]>1">首页</li>
+		<li class="page-item" @click="pageClick(item)" :class="{'current':currentPage==item}" v-for="item in pageRange">{{item}}</li>
+		<li class="more-nexr page-item" @click="currentPage=totalPage" v-if="pageRange[pageRange.length-1]<totalPage">末尾</li>
 		<li class="next-page page-item" @click="nextPage">下一页</li>
 	</ul>
 </template>
@@ -11,11 +11,10 @@
 	export default{
 		data () {
 			return {
-				pageSize:3,
-				totalPage:10,
-				currentPage:0,
+				totalPage:this.$parent.totalPage,
+				currentPage:this.$parent.currentPage,
 				pageRange:[],
-				showCount:5,
+				showCount:this.$parent.showCount,
 			}
 		},
 		watch:{
@@ -25,7 +24,7 @@
 		},
 		methods:{
 			prevPage:function(){
-				if(this.currentPage > 0){
+				if(this.currentPage > 1){
 					this.currentPage --;
 				}
 			},
@@ -36,7 +35,6 @@
 			},
 			pageClick:function(item){
 				this.currentPage = item;
-				console.log(this.currentPage)
 			},
 			updateRange:function(){
 				var start;
@@ -82,5 +80,8 @@
 		background-color:#8bba2e; 
 		border-radius: 5px;
 		cursor:pointer;
+	}
+	.page-item.current{
+		background-color:#6a9e00;
 	}
 </style>

@@ -51,7 +51,7 @@
 				],
 				show:0,
 				auto:true,
-				interval:5000,
+				interval:10000,
 				playThread:"",
 			}
 		},
