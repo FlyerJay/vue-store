@@ -18,10 +18,7 @@
 		methods:{
 			navTo:function(index){
 				this.$store.commit("changePage",index);
-			},
-			...mapMutations([
-				"changePage"
-			])
+			}
 		},
 		watch:{
 			page:function(val){

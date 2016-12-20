@@ -1,7 +1,7 @@
 <template>
 	<div class="banner">
-		<div class="banner-list" :style="{width:items.length*100+'vw',left:'-'+show*100+'vw'}">
-			<div class="banner-item" v-for="(item,index) in items" :style="{'background-image':'url('+item.image+')','left':index*100+'vw'}">
+		<div class="banner-list" :style="{width:banners.length*100+'vw',left:'-'+show*100+'vw'}">
+			<div class="banner-item" v-for="(item,index) in banners" :style="{'background-image':'url('+item.image+')','left':index*100+'vw'}">
 				<div class="item-info">
 					<p class="title">{{item.title}}</p>
 					<p class="description">{{item.description}}</p>
@@ -9,46 +9,16 @@
 			</div>
 		</div>
 		<div class="banner-nav-list">
-			<div class="nav-item" @click="change(index)" :class="{active:index==show}" v-for="(item,index) in items"></div>
+			<div class="nav-item" @click="change(index)" :class="{active:index==show}" v-for="(item,index) in banners"></div>
 		</div>
 	</div>
 </template>
 <script type="text/ecmascript-6">
+	import R from "../resource";
+	import {mapState} from "vuex";
 	export default{
 		data () {
 			return {
-				items:[
-					{
-						title:"Motilla橙子",
-						image:require("assets/loading.jpg"),
-						description:"咬一口，瞬间甜汁喷涌而出，充满整个口腔，一下子勾起食欲",
-						url:"#"
-					},
-					{
-						title:"Motilla橙子",
-						image:require("assets/head_bg.jpg"),
-						description:"咬一口，瞬间甜汁喷涌而出，充满整个口腔，一下子勾起食欲",
-						url:"#"
-					},
-					{
-						title:"Motilla橙子",
-						image:require("assets/head_bg.jpg"),
-						description:"咬一口，瞬间甜汁喷涌而出，充满整个口腔，一下子勾起食欲",
-						url:"#"
-					},
-					{
-						title:"Motilla橙子",
-						image:require("assets/head_bg.jpg"),
-						description:"咬一口，瞬间甜汁喷涌而出，充满整个口腔，一下子勾起食欲",
-						url:"#"
-					},
-					{
-						title:"Motilla橙子",
-						image:require("assets/head_bg.jpg"),
-						description:"咬一口，瞬间甜汁喷涌而出，充满整个口腔，一下子勾起食欲",
-						url:"#"
-					}
-				],
 				show:0,
 				auto:true,
 				interval:10000,
@@ -58,7 +28,7 @@
 		methods:{
 			next:function(){
 				this.show+=1;
-				this.show%=this.items.length
+				this.show%=this.banners.length
 			},
 			change:function(index){
 				this.show = index;
@@ -81,6 +51,11 @@
 				},self.interval)
 			}
 		},
+		computed:{
+			...mapState([
+				"banners"
+			])
+		},
 		watch:{
 			auto:function(val){
 				if(val){
@@ -91,6 +66,10 @@
 			}
 		},
 		created:function(){
+			var self = this;
+			R.getBanners(this,function(res){
+				self.$store.commit("updateBanners",res.data.list);
+			})
 			if(this.auto){
 				this.autoplay();
 			}
