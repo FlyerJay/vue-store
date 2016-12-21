@@ -40,14 +40,6 @@
 	}
 </script>
 <style scoped>
-	.header-info{
-		height:240px;
-		background-image:url(../assets/head_bg.jpg);
-		background-size: 100% 200%;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-blend-mode: multiply;
-	}
 	.navbar{
 		display: flex;
 		flex-direction: row;
